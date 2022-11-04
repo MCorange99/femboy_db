@@ -1,0 +1,10 @@
+{
+	"recommendations": [
+		"aaron-bond.better-comments",
+        "dbaeumer.vscode-eslint",
+        "EditorConfig.EditorConfig",
+        "ms-vscode.vscode-typescript-next",
+        "DavidAnson.vscode-markdownlint",
+        "christian-kohler.npm-intellisense"
+	]
+}

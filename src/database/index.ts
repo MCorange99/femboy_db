@@ -1,7 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const mongoose = require("mongoose");
 
 module.exports = class Database {
+    userSchema: any;
+    guildSchema: any;
     constructor(){
+
+        this.userSchema = require("./schema/userShema");
+        this.guildSchema = require("./schema/guildShema");
+
         mongoose.connection.once("open", () => {
             logger.info("Connected to database", __filename, "Server");
         });

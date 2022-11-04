@@ -42,7 +42,11 @@ const GuildSchema = new Schema({
                     },
                     required: false
                 }
-            ]
+            ],
+            nickname: {
+                type: String || null,
+                required: false
+            }
         }
     },
 

@@ -19,6 +19,17 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
+    avatarUrl: {
+        type: String,
+        required: true
+    },
+    servers: {
+        type: Map,
+        of: {
+            type: String,
+            required: true
+        }
+    },
     api: {
         key: {
             type: String,
@@ -31,12 +42,6 @@ const UserSchema = new Schema({
         type: Boolean,
         default: false
     },
-    gravatar: {
-        email: {
-            type: String,
-            required: false
-        }
-    }
 });
 
 exports.userSchema = models.user || model("user", UserSchema);

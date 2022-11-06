@@ -1,12 +1,14 @@
 {
   "name": "orcord",
   "version": "1.0.0",
-  "main": "target/index.js",
+  "main": "target/src/index.js",
   "license": "gplv3",
   "private": true,
   "dependencies": {
     "@mcorange9/mclog": "^2.0.0",
     "@tsconfig/recommended": "^1.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "json5": "^2.2.1",
     "mongoose": "^6.7.1"
   },

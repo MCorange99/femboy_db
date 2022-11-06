@@ -1,13 +1,13 @@
-const { Schema, model, models } = require("mongoose");
+import { Schema, model, models } from "mongoose";
 
-const UserSchema = new Schema({
+const UserSchema = new Schema<UserI>({
     _id: String,
     username: {
         type: String,
         required: true,
         unique: false
     },
-    disriminator: {
+    discriminator: {
         type: String,
         required: true
     },
@@ -23,13 +23,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    servers: {
-        type: Map,
-        of: {
-            type: String,
-            required: true
-        }
-    },
+    guilds: [String],
     api: {
         key: {
             type: String,
@@ -44,4 +38,4 @@ const UserSchema = new Schema({
     },
 });
 
-exports.userSchema = models.user || model("user", UserSchema);
+export default models.user || model<UserI>("user", UserSchema);

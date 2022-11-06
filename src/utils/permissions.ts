@@ -14,6 +14,6 @@ const RolePermissions = {
 
 
 
-module.exports = {
+export default {
     RolePermissions
 };

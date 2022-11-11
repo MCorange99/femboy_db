@@ -6,9 +6,19 @@ const GuildSchema = new Schema<GuildI>({
         type: String,
         required: true
     },
-    owner: {
+    name: {
         type: String,
         required: true
+    },
+    iconUrl: {
+        type: String,
+        required: true
+    },
+    owner: {
+        id: {
+            type: String,
+            required: true
+        }
     },
     roles: [String],
 

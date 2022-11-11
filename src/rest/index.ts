@@ -32,7 +32,7 @@ export default class Rest {
 
     listen(ip: string, port: number){
         this.app.listen(port, () => {
-            logger.info(logger.color(`Rest api is listening on &uhttps://${ip}:${port}&r`), __filename, "Rest");
+            logger.info(logger.color(`Rest api is listening on &uhttp://${ip}:${port}&r`), __filename, "Rest");
         });
     }
 

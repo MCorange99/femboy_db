@@ -2,7 +2,7 @@ import auth from "./auth";
 import channel from "./channel";
 import guild from "./guild";
 import message from "./message";
-import user from "./message";
+import user from "./user";
 
 import express from "express";
 const router = express.Router();

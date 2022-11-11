@@ -22,4 +22,7 @@ export default class Id {
     static MessageID(){
         return `M_${Date.now().toString()}${Util.randomInt(0,9)}${Util.randomInt(0,9)}${Util.randomInt(0,9)}`;
     }
+    static GuildID(){
+        return `G_${Date.now().toString()}${Util.randomInt(0,9)}${Util.randomInt(0,9)}${Util.randomInt(0,9)}`;
+    }
 }

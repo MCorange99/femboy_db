@@ -3,15 +3,13 @@ interface GuildI {
     owner: {
         id: string
     },
-    roles: Map<string, {
-        name: string,
-        permissions: number,
-        color: string
-    }>,
+    name: string,
+    iconUrl: string,
+    roles: string[],
     inviteStrings: string[],
     nicknames: Map<string, string>,
     users: string[],
-    channels: string[f],
+    channels: string[],
 
 }
 
@@ -19,10 +17,16 @@ interface UserI {
     _id: string,
     username: string
     discriminator: string
-    salt: string
+    salt: string,
+    email: string,
     password_hash: string
     avatarUrl: string
-    guilds: string[]
+    guilds: string[],
+    banned: {
+        isBanned: boolean,
+        bannedUntil?: string,
+        bannedOn?: string
+    }
     api: {
         key: string
         //? Maybe make the key expire after 7 days for security

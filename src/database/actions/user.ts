@@ -6,7 +6,8 @@ export default class UserActions {
         return;
     }
 
-    async createUser(db: Database, userid: string, username: string, discrim: string, salt: string, password_hash: string, avatarUrl: string, apiKey: string, verified = false){
+    async createUser(db: Database, userid: string, username: string,
+        discrim: string, salt: string, password_hash: string, avatarUrl: string, apiKey: string, email: string, verified = false){
         const UserData: UserI = {
             _id: userid,
             username: username,
@@ -14,7 +15,11 @@ export default class UserActions {
             salt: salt,
             password_hash: password_hash,
             avatarUrl: avatarUrl,
+            email: email,
             guilds: [],
+            banned: {
+                isBanned: false,
+            },
             api: {
                 key: apiKey
             },

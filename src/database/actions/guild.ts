@@ -1,20 +1,24 @@
 import Database from "..";
-
+import {default as _Util, Id} from "../../utils";
 export default class GuildActions {
     constructor(){
         return;
     }
 
-    async createGuild(db: Database, guildid: string, ownerid: string){
+    async createGuild(db: Database, owner: UserI, server_name: string): Promise<GuildI> {
         const guild = await db.guildSchema({
-            _id: guildid,
-            owner: ownerid,
-            users: [],
+            _id: Id.GuildID(),
+            owner: {
+                id: owner._id
+            },
+            users: [owner._id],
+            name: server_name,
+            iconUrl: "https://mcorangehq.xyz/",
             roles: [],
             channels: [],
             inviteStrings: []
         });
-        await guild.save();
+        return await guild.save();
     }
 
 

@@ -7,6 +7,10 @@ const UserSchema = new Schema<UserI>({
         required: true,
         unique: false
     },
+    email: {
+        type: String,
+        required: true
+    },
     discriminator: {
         type: String,
         required: true
@@ -24,6 +28,21 @@ const UserSchema = new Schema<UserI>({
         required: true
     },
     guilds: [String],
+    banned: {
+        isBanned: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
+        bannedOn: {
+            type: String,
+            required: false,
+        },
+        bannedUntil: {
+            type: String,
+            required: false
+        }
+    },
     api: {
         key: {
             type: String,

@@ -25,4 +25,12 @@ export default class Id {
     static GuildID(){
         return `G_${Date.now().toString()}${Util.randomInt(0,9)}${Util.randomInt(0,9)}${Util.randomInt(0,9)}`;
     }
+    static ResourceID() {
+        const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+        let buff = "";
+        for (let x = 0; x < 16; x++) {
+            buff += chars[Util.randomInt(0, chars.length-1)];
+        }
+        return buff;
+    }
 }

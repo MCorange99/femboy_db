@@ -58,6 +58,22 @@ class ApiError {
         });
     }
 
+    static InvalidType(res: express.Response, type: string, allowed_types: string[]) {
+        return res.status(409).json({
+            code: "InvalidType",
+            status: 409,
+            message: `Type '${type}' is not included in the allowed type list ['${allowed_types.join("', '")}']`
+        });
+    }
+
+    static ResourceMissing(res: express.Response) {
+        return res.status(410).json({
+            code: "ResourceGone",
+            status: 410,
+            message: "That resource doesnt exist or expired"
+        });
+    }
+
 
 }
 

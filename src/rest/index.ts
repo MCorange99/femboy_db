@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import routes from "./routes";
+import _Websocket from "../websocket";
 export default class Rest {
     app: express;
     constructor() {
@@ -31,8 +32,9 @@ export default class Rest {
     }
 
     listen(ip: string, port: number){
-        this.app.listen(port, () => {
+        const server = this.app.listen(port, async () => {
             logger.info(logger.color(`Rest api is listening on &uhttp://${ip}:${port}&r`), __filename, "Rest");
+            await websocket.init(server);
         });
     }
 

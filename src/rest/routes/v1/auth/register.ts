@@ -2,6 +2,7 @@ import crypto from "crypto";
 import express from "express";
 import { default as Util, ApiError, Id } from "../../../../utils";
 import validator from "validator";
+import { addResource } from "../resource";
 const router = express.Router();
 
 router.post("/", async (req, res) => {
@@ -65,7 +66,13 @@ router.post("/", async (req, res) => {
         guilds: user.guilds.map((guild) => { String(guild);}),
     };
 
-    res.status(200).json({ ...user });
+    const rid = Id.ResourceID();
+    addResource(rid, JSON.stringify(user), req, 30, true, true); // 30 secs
+    res.status(201).set({
+        Location: `/resource/${rid}`
+    }).json({
+        Location: `/resource/${rid}`
+    });
 });
 
 export default router;

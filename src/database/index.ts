@@ -30,8 +30,8 @@ export default class Database {
 
         await mongoose.connect(`${protocol}${username}:${password}@${url}`, {
             keepAlive: true,
-            connectTimeoutMS: 0,
-            socketTimeoutMS: 0,
+            connectTimeoutMS: 30*1000, // seconds
+            socketTimeoutMS: 5*1000,
             serverSelectionTimeoutMS: 0,
         });
         return;

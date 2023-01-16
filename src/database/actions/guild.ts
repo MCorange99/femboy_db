@@ -23,16 +23,18 @@ export default class GuildActions {
 
 
 
-    async create_channel(db: Database, guildid: string, channelid: string, name: string, type: "text") {
+    async create_channel(db: Database, guildid: string, name: string, type: "text"): Promise<ChannelI> {
         const guild = await db.guildSchema.findOne({ _id: guildid});
         const channel = db.channelSchema({
-            _id: channelid,
+            _id: Id.ChannelID(),
             name: name,
             type: type,
         });
-        guild.channels.push(channelid);
+        guild.channels.push(channel._id);
         await channel.save();
         await guild.save();
+
+        return await db.channelSchema.findOne({ _id: channel._id});
     }
 
     async add_user_to_guild(db: Database, guildid: string, userid: string) {

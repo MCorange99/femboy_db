@@ -38,8 +38,8 @@ interface ChannelI {
     _id: string,
     name: string,
     type: string,
-    roles: string,
-    messages: string,
+    roles: string[],
+    messages: string[],
 }
 
 interface RoleI {

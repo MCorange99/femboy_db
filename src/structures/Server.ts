@@ -1,8 +1,8 @@
 import Rest from "../rest/";
 import Database from "../database";
 import config from "../../config.json";
-import Actions from "../database/actions";
-module.exports = class Server {
+// import Actions from "../database/actions";
+export default class Server {
     rest: Rest;
     db: Database;
     config: typeof config;
@@ -50,4 +50,4 @@ module.exports = class Server {
         return;
     }
 
-};
+}

@@ -36,14 +36,15 @@ export default class Payload_v1 {
         return wsu.send(data);
     }
 
-    sendEvent(name, data, id) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    sendEvent(name: string, data: any, target_id?: string) {
         data = JSON.stringify({
             op: 5,
             name, data
         });
 
-        if (id) {
-            const client = this.ws.users.get(id);
+        if (target_id) {
+            const client = this.ws.users.get(target_id);
 
             if (client) {
                 return client.send(data);

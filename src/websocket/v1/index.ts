@@ -41,12 +41,11 @@ export default class V1 {
                 }
                 if (op && this.actions.get(op)) {
                     ws = await this.actions.get(op).action(this, ws, parse);
-                    // console.log("verified:", ws.isAlive);
-
                 }
 
             } catch {return;}
         });
+
     }
 
     set_actions() {
@@ -59,7 +58,7 @@ export default class V1 {
 
             if (typeof action == "object" ) {
                 if (action.op) {
-                    if (this.actions.get(action.op)) return logger.warn("Actions opcode already exists (" + action.op +  ")");
+                    if (this.actions.get(action.op)) return logger.warn("Actions opcode already exists (" + action.op +  ")", __filename, "ws.v1.set_actions");
                 }
                 this.actions.set(action.op, action);
             }

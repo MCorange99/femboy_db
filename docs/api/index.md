@@ -15,7 +15,7 @@
 
 #### Guild
 
-[createGuild](./guild/create.md) 
+[createGuild](./guild/create.md)
 [getGuild](./guild/get.md)
 
 #### Message

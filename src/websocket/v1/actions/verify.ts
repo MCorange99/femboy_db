@@ -33,15 +33,17 @@ export default {
 
         // ------------------------------Heartbeat Start--------------------------
         wsu.isAlive = false;
-        wsu.heartbeat = function () {
-            clearTimeout(this.timeout);
-            // console.log("timout activated");
-
-            this.timeout = setTimeout(() => {
-                // console.log("timout ran");
+        wsu.heartbeat = () => {
+            clearTimeout(wsu.heartbeat.timeout);
+            console.log("timout activated");
+            wsu.heartbeat.destroy = () => {
+                clearTimeout(wsu.heartbeat.timeout);
+            };
+            wsu.heartbeat.timeout = setTimeout(() => {
+                console.log("timout ran");
 
                 if (wsu.isAlive === false) {
-                    this.close(3006, "Heartbeat failure");
+                    wsu.close(3006, "Heartbeat failure");
                 }
             }, ws.hbInterval + 3000);
             wsu.isAlive = false;
@@ -54,7 +56,7 @@ export default {
 
             ws.users.delete(wsu.user.id);
             // User.updateStatus(wsu.user.id, "offline");
-
+            wsu.heartbeat.destroy();
             wsu.heartbeat = undefined;
             wsu.isAlive = undefined;
             wsu.user = undefined;

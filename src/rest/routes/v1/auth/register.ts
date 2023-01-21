@@ -18,7 +18,6 @@ router.post("/", async (req, res) => {
     let discrim = Util.newDiscrim();
     let discrimTries = 0;
     while (!Util.isUsernameAvailable(username, discrim)) {
-        console.log(await Util.isUsernameAvailable(username, discrim));
         discrim = Util.newDiscrim();
         discrimTries++;
 

@@ -35,12 +35,10 @@ export default {
         wsu.isAlive = false;
         wsu.heartbeat = () => {
             clearTimeout(wsu.heartbeat.timeout);
-            console.log("timout activated");
             wsu.heartbeat.destroy = () => {
                 clearTimeout(wsu.heartbeat.timeout);
             };
             wsu.heartbeat.timeout = setTimeout(() => {
-                console.log("timout ran");
 
                 if (wsu.isAlive === false) {
                     wsu.close(3006, "Heartbeat failure");

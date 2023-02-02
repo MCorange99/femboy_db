@@ -66,7 +66,7 @@ router.post("/", async (req, res) => {
     };
 
     const rid = Id.ResourceID();
-    addResource(rid, JSON.stringify(user), req, 30, true, true); // 30 secs
+    addResource(rid, JSON.stringify(user), req, 5000, true, true); // 5 secs
     res.status(201).set({
         Location: `/resource/${rid}`
     }).json({

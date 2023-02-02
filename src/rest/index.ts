@@ -14,13 +14,13 @@ export default class Rest {
 
         this.middleware();
         this.app.use("/", routes);
-
         this.app.all("*", (_req, res, ) => {
             return res.status(404).json({
                 code: 404,
                 message: "RouteNotFound"
             });
         });
+
     }
 
     middleware(){

@@ -1,6 +1,6 @@
 {
   "name": "orcord",
-  "version": "1.0.0",
+  "version": "0.0.1-alpha",
   "main": "target/src/index.js",
   "license": "gplv3",
   "private": true,

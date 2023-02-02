@@ -12,7 +12,17 @@ type cb_type = {
     same_ip: boolean
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+/**
+ *
+ * @param id Resource id
+ * @param data Resource data
+ * @param req Express request object
+ * @param expire_in How long the resource lasts in miliseconds
+ * @param onetime Is the resource one time
+ * @param require_same_ip Does the resource require the same ip to access it
+ *
+ */
+//eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function addResource(id: string, data: string, req: any, expire_in: number, onetime = true, require_same_ip = true) {
     const ip =
             req.headers["cf-connecting-ip"] ||
@@ -39,7 +49,7 @@ router.get("/:rid", async (req, res) => {
     const rid = req.params.rid;
 
     const resource: cb_type = callback_data.get(rid);
-    if (!resource || resource === null || (resource.created_at - Date.now() > 1000*resource.expire_in)) {
+    if (!resource || resource === null || (resource.created_at - Date.now() > resource.expire_in)) {
         return ApiError.ResourceMissing(res);
     }
 

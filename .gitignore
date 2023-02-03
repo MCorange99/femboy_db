@@ -1,5 +1,3 @@
 node_modules/
 target/
 config.json
-api-test.js
-ws-test.js

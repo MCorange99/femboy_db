@@ -55,6 +55,7 @@ const UserSchema = new Schema<UserI>({
         type: Boolean,
         default: false
     },
+
 });
 
 export default models.user || model<UserI>("user", UserSchema);

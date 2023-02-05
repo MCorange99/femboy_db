@@ -31,14 +31,15 @@ jobs:
       
       - name: Update files
         run: |
-          rm -r /var/api/orcord-v1/*
-          cp -r ./* /var/api/orcord-v1/
+          rm -rfv /var/api/orcord-v1/*
+          cp -rfv ./* /var/api/orcord-v1/
           cd /var/api/orcord-v1/ 
           pwd
 
       # Runs a set of commands using the runners shell
       - name: Build
         run: |
+          cd /var/api/orcord-v1/
           pwd
           yarn
           yarn build

@@ -1,0 +1,12 @@
+[Unit]
+Description=The backend for the Orcord project
+
+[Service]
+Type=simple
+WorkingDirectory=/var/api/orcord-v1/
+StandardOutput=journal
+ExecStart=/var/api/orcord-v1/deploy/start.sh
+Enviroment=
+
+[Install]
+WantedBy=default.target

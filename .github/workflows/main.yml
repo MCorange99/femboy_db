@@ -33,19 +33,36 @@ jobs:
         run: |
           rm -rfv /var/api/orcord-v1/*
           cp -rfv ./* /var/api/orcord-v1/
-          cd /var/api/orcord-v1/ 
-          pwd
 
       # Runs a set of commands using the runners shell
+      # ${{ secrets.GITHUB_TOKEN }}
       - name: Build
         run: |
           cd /var/api/orcord-v1/
           pwd
           yarn
           yarn build
+          echo "{}"
+          echo "{" >> ./config.json
+          echo "    \"database\": {" >> ./config.json
+          echo "        \"main\": {" >> ./config.json
+          echo "            \"url\": \"${{ secrets.DB_URL }}\"," >> ./config.json
+          echo "            \"protocol\": \"${{ secrets.DB_PROTOCOL }}\"," >> ./config.json
+          echo "            \"username\": \"${{ secrets.DB_USERNAME }}\"," >> ./config.json
+          echo "            \"password\": \"${{ secrets.DB_PASSWORD }}\"" >> ./config.json
+          echo "        }" >> ./config.json
+          echo "    }," >> ./config.json
+          echo "    \"rest\": {" >> ./config.json
+          echo "        \"ip\": \"${{ secrets.REST_IP }}\"," >> ./config.json
+          echo "        \"port\": ${{ secrets.REST_PORT }}" >> ./config.json
+          echo "    }" >> ./config.json
+          echo "}" >> ./config.json
           
       - name: Restart
         run: |
-          export XDG_RUNTIME_DIR=/run/user/$(id -u)
+          cd /var/api/orcord-v1/ 
+          export XDG_RUNTIME_DIR=/run/user/$(id -u) # systemctl errors out without this
+          cp ./deploy/orcord-v1.service $USER/.config/systemd/user/orcord-v1.service
+          systemctl --user daemon-reload
           systemctl --user restart orcord-v1
           

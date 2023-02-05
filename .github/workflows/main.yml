@@ -46,5 +46,5 @@ jobs:
           
       - name: Restart
         run: |
-          systemctl --user restart orcord-v1
+          systemctl --machine=ubuntu@.host --user restart orcord-v1
           

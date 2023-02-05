@@ -63,7 +63,7 @@ jobs:
           cd /var/api/orcord-v1/ 
           export XDG_RUNTIME_DIR=/run/user/$(id -u)                                     # systemctl errors out without this
           ls ./deploy
-          cp ./deploy/orcord-v1.service $USER/.config/systemd/user/orcord-v1.service    # update service file
+          cp ./deploy/orcord-v1.service /home/$USER/.config/systemd/user/orcord-v1.service    # update service file
           systemctl --user daemon-reload
           systemctl --user restart orcord-v1
           

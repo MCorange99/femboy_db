@@ -74,7 +74,7 @@ jobs:
         run: |
           cd /var/api/orcord-v1/ 
           export XDG_RUNTIME_DIR=/run/user/$(id -u)
-          cp ./deploy/api.orcord.conf /etc/nginx/conf.d/api.orcord.conf
+          sudo cp ./deploy/api.orcord.conf /etc/nginx/conf.d/api.orcord.conf
 
       - name: Restart
         run: |

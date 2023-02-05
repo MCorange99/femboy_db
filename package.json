@@ -5,7 +5,7 @@
   "license": "gplv3",
   "private": true,
   "scripts": {
-    "build": "npx tsc && node ."
+    "build": "npx tsc"
   },
   "dependencies": {
     "@mcorange9/mclog": "^2.0.0",

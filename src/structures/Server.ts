@@ -1,7 +1,32 @@
 import Rest from "../rest/";
 import Database from "../database";
-import config from "../../config.json";
+import fs from "fs";
 // import Actions from "../database/actions";
+
+const config = (() => {
+    if (fs.existsSync("./config.json")) {
+        return JSON.parse(fs.readFileSync("./config.json") as unknown as string);
+    } else {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const c = {
+            database: {
+                main: {
+                    url: process.env.DB_URL,
+                    protocol: process.env.DB_PROTOCOL,
+                    username: process.env.DB_USERNAME,
+                    password: process.env.DB_PASSWORD
+                }
+            },
+            rest: {
+                ip: process.env.REST_IP,
+                port: process.env.REST_PORT
+            }
+        };
+
+        return c;
+
+    }
+})();
 export default class Server {
     rest: Rest;
     db: Database;

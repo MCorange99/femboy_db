@@ -46,5 +46,6 @@ jobs:
           
       - name: Restart
         run: |
-          systemctl --machine=ubuntu@.host --user restart orcord-v1
+          echo "$DBUS_SESSION_BUS_ADDRESS and $XDG_RUNTIME_DIR"
+          systemctl --user restart orcord-v1
           
